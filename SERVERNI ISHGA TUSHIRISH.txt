@@ -1,0 +1,5 @@
+Sizda node js bo'lishi shart
+Xitoy tilini kompiyuterda o'rnatilgan bo'lishi kerak
+
+papkani powershell orqali topasiz
+node server.js
