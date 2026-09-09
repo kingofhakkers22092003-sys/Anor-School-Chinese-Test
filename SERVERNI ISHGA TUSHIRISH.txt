@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 Sizda node js bo'lishi shart
 Xitoy tilini kompiyuterda o'rnatilgan bo'lishi kerak
 
 papkani powershell orqali topasiz
+=======
+Sizda node js bo'lishi shart
+Xitoy tilini kompiyuterda o'rnatilgan bo'lishi kerak
+
+papkani powershell orqali topasiz
+>>>>>>> 98a34f7 (next)
 node server.js

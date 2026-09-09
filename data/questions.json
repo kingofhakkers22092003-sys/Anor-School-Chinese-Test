@@ -1,0 +1,131 @@
+{
+  "Grammatika": [
+    {
+      "id": "g2",
+      "prompt": "Bo‘sh joyni to‘ldiring: 她___中国人。",
+      "options": [
+        "很",
+        "是",
+        "在"
+      ],
+      "answer": "1"
+    },
+    {
+      "id": "g3",
+      "prompt": "“Men maktabga boraman” jumlasini toping.",
+      "options": [
+        "我学校去。",
+        "我去的学校。",
+        "我去学校。"
+      ],
+      "answer": "2"
+    },
+    {
+      "id": "g4",
+      "prompt": "“吗” so‘roq yuklamasi qaysi gapda to‘g‘ri ishlatilgan?",
+      "options": [
+        "你是老师吗？",
+        "吗你是老师？",
+        "你吗是老师？"
+      ],
+      "answer": "0"
+    },
+    {
+      "id": "518254a1-3384-4b1d-b784-1c706faac329",
+      "prompt": "Savol",
+      "options": [
+        "awdaw",
+        "awdaw",
+        "awdaw"
+      ],
+      "answer": "1"
+    }
+  ],
+  "Tinglash": [
+    {
+      "id": "l1",
+      "prompt": "Gapirayotgan bolaning ismi nima?",
+      "audioText": "你好！我叫王明。",
+      "options": [
+        "Li Hua",
+        "Wang Ming",
+        "Zhang Wei"
+      ],
+      "answer": "1"
+    },
+    {
+      "id": "l2",
+      "prompt": "Bugun haftaning qaysi kuni?",
+      "audioText": "今天星期五。",
+      "options": [
+        "Dushanba",
+        "Chorshanba",
+        "Juma"
+      ],
+      "answer": "2"
+    },
+    {
+      "id": "l3",
+      "prompt": "U nimani yoqtiradi?",
+      "audioText": "我喜欢喝茶，不喜欢喝咖啡。",
+      "options": [
+        "Choy",
+        "Qahva",
+        "Sut"
+      ],
+      "answer": "0"
+    }
+  ],
+  "O‘qish": [
+    {
+      "id": "r1",
+      "prompt": "“学校” ieroglifi nimani anglatadi?",
+      "options": [
+        "Oila",
+        "Do‘st",
+        "Maktab"
+      ],
+      "answer": "2"
+    },
+    {
+      "id": "r2",
+      "prompt": "“我喜欢汉语” gapining ma’nosi qaysi?",
+      "options": [
+        "Men xitoy tilini yaxshi ko‘raman.",
+        "Men xitoy tilini o‘qimayman.",
+        "Men ingliz tilini yaxshi ko‘raman."
+      ],
+      "answer": "0"
+    },
+    {
+      "id": "r3",
+      "prompt": "“十岁” nimani anglatadi?",
+      "options": [
+        "O‘n yosh",
+        "Yigirma yosh",
+        "O‘n kun"
+      ],
+      "answer": "0"
+    }
+  ],
+  "Yozish": [
+    {
+      "id": "w1",
+      "prompt": "So‘zlardan to‘g‘ri jumla tuzing: 我 / 学生 / 是"
+    },
+    {
+      "id": "w2",
+      "prompt": "Xitoy tilida ismingiz, sinfingiz va xitoy tilini yoqtirasizmi yoki yo‘qligi haqida 2–3 ta sodda gap yozing."
+    },
+    {
+      "id": "w3",
+      "prompt": "“Bugun havo yaxshi.” jumlasini xitoy tiliga tarjima qiling."
+    }
+  ],
+  "Gapirish": [
+    {
+      "id": "s1",
+      "prompt": "O‘zingizni xitoy tilida tanishtiring: ismingiz, sinfingiz va xitoy tili haqida 2–3 ta gap ayting."
+    }
+  ]
+}
