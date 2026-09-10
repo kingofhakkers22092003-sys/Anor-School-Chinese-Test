@@ -1,5 +1,9 @@
 {
   "gradingMode": "teacher",
   "adminUsername": "admin",
-  "adminPassword": "admin"
+  "adminPassword": "admin",
+  "readingPassage": {
+    "content": "我叫李华，今年十岁。我在安诺学校学习。我喜欢汉语，也喜欢画画。",
+    "translation": "Men Li Huaman, 10 yoshdaman. Anor maktabida o‘qiyman. Xitoy tilini va rasm chizishni yaxshi ko‘raman."
+  }
 }

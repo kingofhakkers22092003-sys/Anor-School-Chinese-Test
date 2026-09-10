@@ -112,6 +112,8 @@ function loadDb() {
     gradingMode: settings.gradingMode || 'teacher',
     adminUsername: settings.adminUsername || 'admin',
     adminPassword: settings.adminPassword || 'admin',
+    // O'qish bo'limidagi umumiy matn savollardan alohida saqlanadi.
+    readingPassage: settings.readingPassage || { content: '', translation: '' },
   };
   saveDb(db); // fayllar hali mavjud bo'lmasa (yoki migratsiyadan keyin) darhol yozib qo'yamiz
   return db;
@@ -119,7 +121,7 @@ function loadDb() {
 function saveDb(db) {
   fs.writeFileSync(STUDENTS_FILE, JSON.stringify(db.students, null, 2));
   fs.writeFileSync(QUESTIONS_FILE, JSON.stringify(db.questionBank, null, 2));
-  fs.writeFileSync(SETTINGS_FILE, JSON.stringify({ gradingMode: db.gradingMode, adminUsername: db.adminUsername, adminPassword: db.adminPassword }, null, 2));
+  fs.writeFileSync(SETTINGS_FILE, JSON.stringify({ gradingMode: db.gradingMode, adminUsername: db.adminUsername, adminPassword: db.adminPassword, readingPassage: db.readingPassage }, null, 2));
 }
 
 // Bir vaqtda bir nechta kompyuterdan so'rov kelganda faylga yozish ustma-ust
@@ -418,6 +420,25 @@ app.delete('/api/questions/:section/:id', (req, res) => {
     return db.questionBank;
   })
     .then(bank => res.json(bank))
+    .catch(() => res.status(500).json({ error: 'server-error' }));
+});
+
+// ---------- O'qish uchun asosiy matn ----------
+app.get('/api/reading-passage', (req, res) => {
+  withDb(db => db.readingPassage || { content: '', translation: '' })
+    .then(passage => res.json(passage))
+    .catch(() => res.status(500).json({ error: 'server-error' }));
+});
+
+app.post('/api/reading-passage', (req, res) => {
+  const { content, translation } = req.body || {};
+  if (typeof content !== 'string' || typeof translation !== 'string') return res.status(400).json({ error: 'invalid' });
+  withDb(db => {
+    db.readingPassage = { content: content.trim(), translation: translation.trim() };
+    saveDb(db);
+    return db.readingPassage;
+  })
+    .then(passage => res.json(passage))
     .catch(() => res.status(500).json({ error: 'server-error' }));
 });
 
