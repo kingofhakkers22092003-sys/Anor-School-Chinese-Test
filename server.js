@@ -47,10 +47,10 @@ const TEST_KEYS = ['Grammatika', 'Tinglash', 'O\u2018qish', 'Yozish', 'Gapirish'
 
 const DEFAULT_QUESTIONS = {
   Grammatika: [
-    { id: 'g1', prompt: '\u201cMen o\u2018quvchiman\u201d jumlasining to\u2018g\u2018ri tarjimasi qaysi?', options: ['\u6211\u662f\u5b66\u751f\u3002', '\u6211\u5b66\u751f\u662f\u3002', '\u6211\u662f\u7684\u5b66\u751f\u3002'], answer: '0' },
-    { id: 'g2', prompt: 'Bo\u2018sh joyni to\u2018ldiring: \u5979___\u4e2d\u56fd\u4eba\u3002', options: ['\u5f88', '\u662f', '\u5728'], answer: '1' },
-    { id: 'g3', prompt: '\u201cMen maktabga boraman\u201d jumlasini toping.', options: ['\u6211\u5b66\u6821\u53bb\u3002', '\u6211\u53bb\u7684\u5b66\u6821\u3002', '\u6211\u53bb\u5b66\u6821\u3002'], answer: '2' },
-    { id: 'g4', prompt: '\u201c\u5417\u201d so\u2018roq yuklamasi qaysi gapda to\u2018g\u2018ri ishlatilgan?', options: ['\u4f60\u662f\u8001\u5e08\u5417\uff1f', '\u5417\u4f60\u662f\u8001\u5e08\uff1f', '\u4f60\u5417\u662f\u8001\u5e08\uff1f'], answer: '0' },
+    { id: 'g1', prompt: 'Choose the correct word: She ___ my best friend.', options: ['am', 'is', 'are'], answer: '1' },
+    { id: 'g2', prompt: 'Choose the correct sentence.', options: ['He go to school every day.', 'He goes to school every day.', 'He going to school every day.'], answer: '1' },
+    { id: 'g3', prompt: 'Complete the sentence: There ___ two books on the table.', options: ['is', 'are', 'am'], answer: '1' },
+    { id: 'g4', prompt: 'Which question is correct?', options: ['Where you live?', 'Where do you live?', 'Where live you?'], answer: '1' },
   ],
   Tinglash: [
     { id: 'l1', prompt: 'Gapirayotgan bolaning ismi nima?', audioText: '\u4f60\u597d\uff01\u6211\u53eb\u738b\u660e\u3002', options: ['Li Hua', 'Wang Ming', 'Zhang Wei'], answer: '1' },
@@ -174,12 +174,12 @@ function buildResultPdfBuffer(student) {
     '0.11 0.20 0.28 rg', '0 670 595 172 re f',
     '0.77 0.58 0.22 rg', '0 670 595 6 re f',
     'BT', '/F2 27 Tf', '1 1 1 rg', '57 774 Td', '(ANOR SCHOOL) Tj',
-    '/F1 11 Tf', '0 -23 Td', '0.91 0.79 0.48 rg', '(CHINESE LANGUAGE DIAGNOSTIC REPORT) Tj',
+    '/F1 11 Tf', '0 -23 Td', '0.91 0.79 0.48 rg', '(ENGLISH LANGUAGE DIAGNOSTIC REPORT) Tj',
     '/F1 10 Tf', '0 -48 Td', '1 1 1 rg', `(Student: ${pdfSafe(student.fullName)}) Tj`,
     '0 -17 Td', `(Class: ${pdfSafe(student.schoolClass)}) Tj`,
     '255 17 Td', `(Date: ${new Date().toLocaleDateString('en-CA')}) Tj`, 'ET',
     '0.11 0.20 0.28 rg', 'BT', '/F2 18 Tf', '57 625 Td', '(Assessment summary) Tj',
-    '/F1 10 Tf', '0 -18 Td', '0.35 0.40 0.42 rg', '(Results from the completed Chinese language diagnostic.) Tj', 'ET',
+    '/F1 10 Tf', '0 -18 Td', '0.35 0.40 0.42 rg', '(Results from the completed English language diagnostic.) Tj', 'ET',
     '0.11 0.20 0.28 rg', '57 556 481 34 re f',
     'BT', '/F2 10 Tf', '1 1 1 rg', '73 569 Td', '(SKILL) Tj', '315 0 Td', '(RESULT) Tj', 'ET'
   ];
@@ -187,14 +187,14 @@ function buildResultPdfBuffer(student) {
     const y = 512 - index * 48; const fill = index % 2 === 0 ? '0.94 0.94 0.91' : '0.98 0.97 0.94';
     const score = result && result.pending ? 'Teacher review pending' : `${result.score} / ${result.total}`;
     stream.push(fill + ' rg', `57 ${y} 481 47 re f`, '0.77 0.58 0.22 rg', `57 ${y} 5 47 re f`,
-      '0.13 0.22 0.29 rg', 'BT', '/F2 12 Tf', `75 ${y + 19} Td`, `(${pdfSafe(labels[index])}) Tj`, '/F1 9 Tf', '0 -13 Td', `(Chinese language skill ${index + 1}) Tj`, 'ET',
+      '0.13 0.22 0.29 rg', 'BT', '/F2 12 Tf', `75 ${y + 19} Td`, `(${pdfSafe(labels[index])}) Tj`, '/F1 9 Tf', '0 -13 Td', `(English language skill ${index + 1}) Tj`, 'ET',
       '0.13 0.22 0.29 rg', 'BT', '/F2 12 Tf', `378 ${y + 18} Td`, `(${pdfSafe(score)}) Tj`, 'ET');
   });
   stream.push('0.77 0.58 0.22 rg', '57 234 481 1 re f',
     '0.13 0.22 0.29 rg', 'BT', '/F2 11 Tf', '57 204 Td', '(Teacher review) Tj',
     '/F1 9 Tf', '0 -15 Td', '0.35 0.40 0.42 rg', '(Writing and speaking scores are confirmed after teacher review.) Tj',
     '0.13 0.22 0.29 rg', '0 -105 Td', '(ANOR INTERNATIONAL SCHOOL) Tj',
-    '0.35 0.40 0.42 rg', '0 -14 Td', '(Chinese Language Programme - Student Assessment Report) Tj', 'ET', 'Q');
+    '0.35 0.40 0.42 rg', '0 -14 Td', '(English Language Programme - Student Assessment Report) Tj', 'ET', 'Q');
   const content = stream.join('\n');
   const objects = ['<< /Type /Catalog /Pages 2 0 R >>', '<< /Type /Pages /Kids [3 0 R] /Count 1 >>', '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>', `<< /Length ${content.length} >>\nstream\n${content}\nendstream`, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>', '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>'];
   let pdf = '%PDF-1.4\n'; const offsets = [0]; objects.forEach((object, index) => { offsets.push(pdf.length); pdf += `${index + 1} 0 obj\n${object}\nendobj\n`; }); const xref = pdf.length; pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n${offsets.slice(1).map(offset => `${String(offset).padStart(10, '0')} 00000 n \n`).join('')}trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`;
@@ -393,11 +393,12 @@ app.get('/api/questions', (req, res) => {
 });
 
 app.post('/api/questions', (req, res) => {
-  const { section, prompt, audioText, audioUrl, options, answer } = req.body || {};
-  if (!section || !prompt) return res.status(400).json({ error: 'invalid' });
+  const { section, grade, prompt, audioText, audioUrl, options, answer } = req.body || {};
+  const normalizedGrade = Number(grade);
+  if (!section || !prompt || !Number.isInteger(normalizedGrade) || normalizedGrade < 1 || normalizedGrade > 11) return res.status(400).json({ error: 'invalid' });
   withDb(db => {
     if (!db.questionBank[section] || !Array.isArray(db.questionBank[section])) db.questionBank[section] = [];
-    const question = { id: crypto.randomUUID(), prompt };
+    const question = { id: crypto.randomUUID(), grade: normalizedGrade, prompt };
     if (options) question.options = options;
     if (answer !== undefined) question.answer = answer;
     // Tinglash uchun: o'qituvchi audio faylini yuklaydi (audioUrl, base64 data-url sifatida
@@ -410,6 +411,18 @@ app.post('/api/questions', (req, res) => {
   })
     .then(bank => res.json(bank))
     .catch(() => res.status(500).json({ error: 'server-error' }));
+});
+
+app.patch('/api/questions/:section/:id', (req, res) => {
+  const normalizedGrade = Number(req.body?.grade);
+  if (!Number.isInteger(normalizedGrade) || normalizedGrade < 1 || normalizedGrade > 11) return res.status(400).json({ error: 'invalid' });
+  withDb(db => {
+    const question = (db.questionBank[req.params.section] || []).find(item => item.id === req.params.id);
+    if (!question) return null;
+    question.grade = normalizedGrade;
+    saveDb(db);
+    return db.questionBank;
+  }).then(bank => bank ? res.json(bank) : res.status(404).json({ error: 'not-found' })).catch(() => res.status(500).json({ error: 'server-error' }));
 });
 
 app.delete('/api/questions/:section/:id', (req, res) => {
@@ -551,7 +564,7 @@ app.post('/api/grade-speaking', upload.single('audio'), async (req, res) => {
     const transcription = await openai.audio.transcriptions.create({
       file: fs.createReadStream(req.file.path),
       model: 'whisper-1',
-      language: 'zh',
+      language: 'en',
     });
 
     fs.unlink(req.file.path, () => {});
